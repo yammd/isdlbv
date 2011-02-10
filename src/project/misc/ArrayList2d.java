@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  *
  * @author mad
- * source from: http://www.javaprogrammingforums.com/java-code-snippets-tutorials/696-multi-dimension-arraylist-example.html
+ * adaptation for the source: http://www.javaprogrammingforums.com/java-code-snippets-tutorials/696-multi-dimension-arraylist-example.html
  */
 
 public class ArrayList2d<Type>
@@ -34,21 +34,13 @@ public class ArrayList2d<Type>
     }
 
     /**
-     * Ensures that the given row has at least the given capacity. Note that
-     * this method will also ensure that getNumRows() >= row
-     *
+     * Ensures that the given indice row/column exists, if not
+     * creating intermediate row(s) and column(s)' cells and
+     * fill them in with the Null value
+     * 
      * @param row
-     * @param num
+     * @param column
      */
-    /*public void ensureCapacity(int row, int num)
-    {
-        ensureCapacity(row);
-        while (row < getNumRows())
-        {
-            array.add(new ArrayList<Type>());
-        }
-        array.get(row).ensureCapacity(num);
-    }*/
     public void ensureCapacity(int row, int column)
     {
         /* Ensure the number of row is correct */
@@ -76,13 +68,7 @@ public class ArrayList2d<Type>
     public void add(Type data, int row, int column)
     {
         this.ensureCapacity(row,column);
-        /*ensureCapacity(row);
-        while(row >= getNumRows())
-        {
-            array.add(new ArrayList<Type>());
-        }*/
-        //array.get(row).add(data);
-        //array.get(row).ensureCapacity(column);
+
         array.get(row).set(column, data);
     }
 
@@ -96,6 +82,7 @@ public class ArrayList2d<Type>
         array.get(row).set(col,data);
     }
 
+    /* TODO, cleaner version of remove */
     public void remove(int row, int col)
     {
         array.get(row).remove(col);
