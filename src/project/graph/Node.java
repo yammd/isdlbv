@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Node {
 
-    int id;
+    private int id;
     
     ArrayList<Marker> markers;
     //ArrayList<Node> directs_links;
@@ -26,5 +26,28 @@ public class Node {
     public Node(int id)
     {
         this.id=id;
+    }
+
+    @Override
+    public String toString()
+    {
+        String ret="";
+        ret="Id = "+this.getId()+"\n";
+
+        return ret;
+    }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
     }
 }

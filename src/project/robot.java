@@ -42,13 +42,11 @@ public class robot extends SingleFrameApplication {
     public static void main(String[] args) {
         //launch(robot.class, args);
         ArrayList2d array2d = new ArrayList2d<Integer>();
-        //array2d.add(10, 5);
-        //array2d.set(10, 10, 100);
-        //array2d.add(10,0);
-        //array2d.add(15,1);
-        //array2d.add(20, 2);
-        //array2d.set(0, 10, new Integer(100));
-        array2d.add(100,1,1);
-        array2d.print();
+
+        array2d.setDefaultValue(-1);
+        array2d.add(100,4,4);
+        array2d.add(50,0,0);
+        System.out.println(array2d);
+
     }
 }

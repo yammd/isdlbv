@@ -16,10 +16,12 @@ import java.util.ArrayList;
 public class ArrayList2d<Type>
 {
     ArrayList<ArrayList<Type>>  array;
+    Type default_value;
 
     public ArrayList2d()
     {
         array = new ArrayList<ArrayList<Type>>();
+        this.default_value=null;
     }
 
     /**
@@ -57,7 +59,7 @@ public class ArrayList2d<Type>
             ArrayList a=array.get(i);
             a.ensureCapacity(column);
             for(int j=a.size();j<column+1;j++)
-                a.add(null);
+                a.add(this.default_value); // TODO: do we need to clone ?
             
         }
     }
@@ -110,13 +112,28 @@ public class ArrayList2d<Type>
         return array.get(row).size();
     }
 
-    public void print()
+    /* When automaticly expanding the matrix
+     * necessary padding is created with this value (initially set to null)
+     *
+     */
+    public void setDefaultValue(Type d)
     {
+        this.default_value=d;
+    }
+
+
+    @Override
+    public String toString()
+    {
+        String ret="";
+
         for (int i=0;i<this.getNumRows();i++)
         {
             for(int j=0;j<this.getNumCols(i);j++)
-                System.out.print(this.get(i, j)+" ");
-            System.out.println("\n");
+               ret+=this.get(i, j)+" ";
+            ret+="\n";
         }
+
+        return ret;
     }
 }
