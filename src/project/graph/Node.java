@@ -17,16 +17,25 @@ public class Node {
     
     ArrayList<Marker> markers;
     //ArrayList<Node> directs_links;
-    
+    ArrayList<Integer> links;
+    boolean visited;
+
     public Node()
     {
-
+        this.visited=false;
     }
     
     public Node(int id)
     {
         this.id=id;
+        this.visited=false;
     }
+
+    /*public Node(int id,ArrayList<Integer> links)
+    {
+        this.id=id;
+        this.links=links;
+    }*/
 
     @Override
     public String toString()
@@ -49,5 +58,10 @@ public class Node {
      */
     public void setId(int id) {
         this.id = id;
+    }
+
+    public boolean isVisited()
+    {
+        return this.visited;
     }
 }

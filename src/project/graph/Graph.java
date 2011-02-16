@@ -16,16 +16,17 @@ public class Graph {
 
     int incrementkey;
     ArrayList<Node> nodes;
-    ArrayList2d<Integer> edges;
+    ArrayList2d<Edge> edges;
     
     public Graph()
     {
         this.incrementkey=0;
-        edges = new ArrayList2d<Integer>();
-        edges.setDefaultValue(-1); // -1 = no link
+        this.nodes = new ArrayList<Node>();
+        edges = new ArrayList2d<Edge>();
+        edges.setDefaultValue(null); // -1 = no link
     }
 
-    int addNode()
+    public int addNode()
     {
         int key=this.incrementkey;
         Node n=new Node();
@@ -34,11 +35,29 @@ public class Graph {
 
         return key;
     }
+
+    public int addNode(int gkey)
+    {
+        Node n=new Node();
+        n.setId(gkey);
+        this.nodes.add(n);
+
+        return gkey;
+    }
     
 
-    int linkNodes(int id1, int id2,int distance)
+    public void linkNodes(int edgeId, int id1, int id2,double distance)
     {
-        edges.add(distance, id1, id2);
-        return 0;
+        Edge e = new Edge(edgeId,distance);
+        edges.add(e, id1, id2);
+        edges.add(e, id2, id1);
+    }
+
+    @Override
+    public String toString()
+    {
+        String ret="";
+        ret = this.edges.toString();
+        return ret;
     }
 }

@@ -27,7 +27,7 @@ public class Bot {
 
     public void move(int new_position)
     {
-
         this.energy= this.energy-ENERGY_MOVE;
+        this.position = new_position;
     }
 }

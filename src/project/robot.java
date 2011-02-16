@@ -6,6 +6,8 @@ package project;
 
 import org.jdesktop.application.Application;
 import org.jdesktop.application.SingleFrameApplication;
+import project.graph.Graph;
+import project.graph.GraphFileReader;
 import project.misc.ArrayList2d;
 
 /**
@@ -41,12 +43,16 @@ public class robot extends SingleFrameApplication {
      */
     public static void main(String[] args) {
         //launch(robot.class, args);
-        ArrayList2d array2d = new ArrayList2d<Integer>();
+        /*ArrayList2d array2d = new ArrayList2d<Integer>();
 
         array2d.setDefaultValue(-1);
         array2d.add(100,4,4);
         array2d.add(50,0,0);
-        System.out.println(array2d);
+        System.out.println(array2d);*/
+        GraphFileReader gfr = new GraphFileReader("benchmark1_graph.txt");
+        Graph g = gfr.getGraph();
+        //System.out.println(g);
+
 
     }
 }
