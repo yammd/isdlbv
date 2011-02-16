@@ -20,6 +20,7 @@ public class Edge {
     public Edge(int id, double distance)
     {
         this.visited=false;
+        this.distance = distance;
     }
 
     public boolean isVisited()
@@ -37,6 +38,7 @@ public class Edge {
         this.markers.remove(m);
     }
 
+    @Override
     public String toString()
     {
         String ret="";

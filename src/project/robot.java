@@ -51,7 +51,7 @@ public class robot extends SingleFrameApplication {
         System.out.println(array2d);*/
         GraphFileReader gfr = new GraphFileReader("benchmark1_graph.txt");
         Graph g = gfr.getGraph();
-        //System.out.println(g);
+        System.out.println(g);
 
 
     }
