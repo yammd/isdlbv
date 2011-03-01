@@ -6,6 +6,9 @@
       <Properties>
         <Property name="name" type="java.lang.String" value="mainPanel" noResource="true"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JPanelGraph()"/>
+      </AuxValues>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -15,7 +18,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="252" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="249" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -91,7 +94,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusMessageLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="226" max="32767" attributes="0"/>
+                  <EmptySpace pref="230" max="32767" attributes="0"/>
                   <Component id="progressBar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusAnimationLabel" min="-2" max="-2" attributes="0"/>

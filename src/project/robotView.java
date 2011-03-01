@@ -15,6 +15,8 @@ import javax.swing.Timer;
 import javax.swing.Icon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import project.graph.*;
+import project.gui.*;
 
 /**
  * The application's main frame.
@@ -79,8 +81,16 @@ public class robotView extends FrameView {
                 }
             }
         });
+
+        this.myInit();
     }
 
+    public void myInit()
+    {
+        GraphFileReader gfr = new GraphFileReader("benchmark1_mine_graph.txt","benchmark1_mine.txt");
+        ((JPanelGraph) this.mainPanel).setGraph(gfr.getGraph());
+        //System.out.println(gfr.getGraph());
+    }
     @Action
     public void showAboutBox() {
         if (aboutBox == null) {
@@ -100,7 +110,7 @@ public class robotView extends FrameView {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        mainPanel = new javax.swing.JPanel();
+        mainPanel = new JPanelGraph();
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
@@ -122,7 +132,7 @@ public class robotView extends FrameView {
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 252, Short.MAX_VALUE)
+            .addGap(0, 249, Short.MAX_VALUE)
         );
 
         menuBar.setName("menuBar"); // NOI18N
@@ -166,7 +176,7 @@ public class robotView extends FrameView {
             .addGroup(statusPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(statusMessageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
                 .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusAnimationLabel)

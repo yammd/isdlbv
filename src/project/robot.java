@@ -4,6 +4,8 @@
 
 package project;
 
+import java.util.Scanner;
+import java.util.regex.MatchResult;
 import org.jdesktop.application.Application;
 import org.jdesktop.application.SingleFrameApplication;
 import project.graph.Graph;
@@ -49,10 +51,12 @@ public class robot extends SingleFrameApplication {
         array2d.add(100,4,4);
         array2d.add(50,0,0);
         System.out.println(array2d);*/
-        GraphFileReader gfr = new GraphFileReader("benchmark1_graph.txt");
-        Graph g = gfr.getGraph();
-        System.out.println(g);
 
+        //GraphFileReader gfr = new GraphFileReader("benchmark1_graph.txt","benchmark1.txt");
+        //Graph g = gfr.getGraph();
+        //System.out.println(g);
+
+        launch(robot.class, args);
 
     }
 }

@@ -5,6 +5,9 @@
 
 package project.graph;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 /**
@@ -13,16 +16,24 @@ import java.util.ArrayList;
  */
 public class Node {
 
+    final static Color color_unvisited = Color.RED;
+    final static Color color_visited = Color.GREEN;
+    
     private int id;
     
-    ArrayList<Marker> markers;
-    //ArrayList<Node> directs_links;
-    ArrayList<Integer> links;
-    boolean visited;
+    private ArrayList<Marker> markers;
+    //private ArrayList<Node> directs_links;
+    private ArrayList<Integer> links;
+    private boolean visited;
+
+    // Graphical information
+    private int graphX,graphY;
+    private Color current_color;
 
     public Node()
     {
-        this.visited=false;
+        this.visited = false;
+        this.current_color = Node.color_unvisited;
     }
     
     public Node(int id)
@@ -63,5 +74,25 @@ public class Node {
     public boolean isVisited()
     {
         return this.visited;
+    }
+
+    public void setVisited()
+    {
+        this.visited = true;
+        this.current_color = Node.color_visited;
+    }
+
+    public void setGraphic(int x, int y)
+    {
+        this.graphX=x;
+        this.graphY=y;
+    }
+
+    public void paint(Graphics g)
+    {
+        Graphics2D g2 = (Graphics2D) g;
+
+        g2.setPaint(this.current_color);
+        g2.drawOval(this.graphX, this.graphY, 5, 5);
     }
 }
