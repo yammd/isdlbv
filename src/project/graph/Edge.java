@@ -5,6 +5,7 @@
 
 package project.graph;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -70,6 +71,7 @@ public class Edge {
         g2.setPaint(this.current_color);
         //System.out.println("edge "+this.graph_x1+" "+this.graph_x2+" "+this.graph_y1+" "+this.graph_y2);
         Line2D line = new Line2D.Float(this.graph_x1, this.graph_x2, this.graph_y1, this.graph_y2);
+        g2.setStroke(new BasicStroke(2));
         g2.draw(line);
     }
 
