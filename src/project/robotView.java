@@ -90,6 +90,9 @@ public class robotView extends FrameView {
         GraphFileReader gfr = new GraphFileReader("benchmark1_mine_graph.txt","benchmark1_mine.txt");
         ((JPanelGraph) this.mainPanel).setGraph(gfr.getGraph());
         //System.out.println(gfr.getGraph());
+
+        Thread simulation = new Simulation(gfr.getGraph(),this.mainPanel);
+        simulation.start();
     }
     @Action
     public void showAboutBox() {

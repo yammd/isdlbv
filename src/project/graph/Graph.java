@@ -69,6 +69,33 @@ public class Graph {
         return this.edges.get(id1, id2);
     }
 
+    /* Returns the list of node's id reachable in one step
+     * from the current_position
+     */
+    public ArrayList<Integer> getPossiblePathFrom(int current_position)
+    {
+        ArrayList<Integer> ret = new ArrayList<Integer>();
+
+        for(int i=0;i<this.edges.getNumCols(current_position);i++)
+        {
+            if(this.edges.get(current_position, i) != null)
+                ret.add(i);
+        }
+        
+        return ret;
+    }
+    
+    /* Move from node id1 to node id2 */
+    public void goFromTo(int id1,int id2)
+    {
+        //System.out.println("Move from "+id1+" to "+id2);
+        
+        this.nodes.get(id1).setVisited();
+        this.nodes.get(id2).setVisited();
+        
+        this.edges.get(id1, id2).setVisited();
+    }
+    
     public void paint(Graphics g)
     {
         // Draw edges
