@@ -33,6 +33,7 @@ public class Edge {
         this.visited=false;
         this.distance = distance;
         this.current_color = Edge.color_unvisited;
+        this.markers = new ArrayList<Marker>();
     }
 
     public boolean isVisited()
@@ -56,6 +57,12 @@ public class Edge {
         this.markers.remove(m);
     }
 
+    public void reset()
+    {
+        this.visited=false;
+        this.current_color = Edge.color_unvisited;
+        this.markers.clear();
+    }
     public void setGraphic(int x1,int x2,int y1, int y2)
     {
         this.graph_x1 = x1;

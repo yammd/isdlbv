@@ -37,6 +37,13 @@ public abstract class Bot {
         this.graph = g;
     }
 
+    public void reset()
+    {
+        this.visitedNodes.clear();
+        this.position=this.start_position;
+        //this.energy= ??;
+    }
+    
     public abstract void move();
     //{
         //this.energy= this.energy-ENERGY_MOVE;

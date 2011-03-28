@@ -34,12 +34,14 @@ public class Node {
     {
         this.visited = false;
         this.current_color = Node.color_unvisited;
+        this.markers = new ArrayList<Marker>();
     }
     
     public Node(int id)
     {
         this.id=id;
         this.visited=false;
+        this.markers = new ArrayList<Marker>();
     }
 
     /*public Node(int id,ArrayList<Integer> links)
@@ -82,6 +84,13 @@ public class Node {
         this.current_color = Node.color_visited;
     }
 
+    public void reset()
+    {
+        this.markers.clear();
+        this.visited=false;
+        this.current_color = Node.color_unvisited;
+    }
+    
     public void setGraphic(int x, int y)
     {
         this.graphX=x;

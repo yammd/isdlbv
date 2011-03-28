@@ -5,6 +5,7 @@
 
 package project;
 
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
@@ -17,8 +18,10 @@ import project.bot.*;
  */
 public class Simulation extends Thread {
 
-    Graph graph;
-    JPanel panel;
+    protected final static int INIT_POSITION=1;
+    
+    protected Graph graph;
+    protected JPanel panel;
     public Simulation(Graph g,JPanel p)
     {
         this.graph = g;
@@ -28,28 +31,43 @@ public class Simulation extends Thread {
     @Override
     public void run()
     {
-        Bot bot = new BotRandom(this.graph,1);
+        //Bot bot = new BotRandom(this.graph,1);
+        ArrayList<Bot> bots = this.InitRandomBot(5);
         int count=0;
-        while(true)
+        boolean isFullyVisited=false;
+        while(!isFullyVisited)
         {
             try {
                 //Thread.sleep(1500);
                 Thread.sleep(100);
-                bot.move();
+                for(int i=0;i<bots.size();i++)
+                    ((Bot) bots.get(i)).move();
+
                 this.panel.repaint();
                 this.panel.revalidate();
-                if(count%200 == 0)
+                if(count%260 == 0)
+                {
                     System.out.println(count);
+                    //this.graph.reset();
+                }
                 count++;
+
+                isFullyVisited = this.graph.isGraphAllVisited();
                 
             } catch (InterruptedException ex) {
                 Logger.getLogger(Simulation.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        System.out.println("Total number of iteration:"+count);
     }
 
-    /*private ArrayList<Bot> InitBot(int count)
+    protected ArrayList<Bot> InitRandomBot(int count)
     {
-        ArrayList<Bot> ret = new ArrayList()
-    }*/
+        ArrayList<Bot> ret = new ArrayList<Bot>();
+
+        for(int i=0;i<count;i++)
+            ret.add(new BotRandom(this.graph,Simulation.INIT_POSITION));
+
+        return ret;
+    }
 }

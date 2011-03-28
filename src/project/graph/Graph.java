@@ -27,7 +27,7 @@ public class Graph {
         //this.nodes = new ArrayList<Node>();
         this.nodes = new HashMap<Integer,Node>();
         edges = new ArrayList2d<Edge>();
-        edges.setDefaultValue(null); // -1 = no link
+        edges.setDefaultValue(null); // null = no link
     }
 
     public int addNode()
@@ -95,7 +95,62 @@ public class Graph {
         
         this.edges.get(id1, id2).setVisited();
     }
+
+    public boolean isGraphAllVisited()
+    {
+        boolean ret=true;
+        for (int i=0;i<this.edges.getNumRows() && ret == true;i++)
+        {
+            for(int j=0;j<this.edges.getNumCols(i) && ret == true;j++)
+            {
+                Edge e = this.getEdge(i, j);
+                if( e != null && !e.isVisited())
+                {
+                    ret = false;
+                    //break;
+                }
+            }
+        }
+        return ret;
+    }
+
+    public int getNumberNodes()
+    {
+        return this.nodes.size();
+    }
+
+    public int getNumberVisitedNodes()
+    {
+        int count=0;
+        for (Integer mapKey : this.nodes.keySet())
+        {
+            if( (this.nodes.get(mapKey)).isVisited())
+                count++;
+        }
+
+        return count;
+    }
     
+    /* Reset Graph to the init value (not visited */
+    public void reset()
+    {
+        // Reset Edges
+        for (int i=0;i<this.edges.getNumRows();i++)
+        {
+            for(int j=0;j<this.edges.getNumCols(i);j++)
+            {
+                Edge e = this.getEdge(i, j);
+                if( e != null)
+                    e.reset();
+            }
+        }
+        
+        // Reset Nodes
+        for (Integer mapKey : this.nodes.keySet())
+            (this.nodes.get(mapKey)).reset();
+        
+    }
+
     public void paint(Graphics g)
     {
         // Draw edges

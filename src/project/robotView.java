@@ -91,6 +91,7 @@ public class robotView extends FrameView {
         ((JPanelGraph) this.mainPanel).setGraph(gfr.getGraph());
         //System.out.println(gfr.getGraph());
 
+        //Thread simulation = new SimulationStat(gfr.getGraph(),this.mainPanel);
         Thread simulation = new Simulation(gfr.getGraph(),this.mainPanel);
         simulation.start();
     }
