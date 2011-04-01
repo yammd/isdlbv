@@ -57,6 +57,11 @@ public class Edge {
         this.markers.remove(m);
     }
 
+    public ArrayList<Marker> getMarkers()
+    {
+        return this.markers;
+    }
+    
     public void reset()
     {
         this.visited=false;

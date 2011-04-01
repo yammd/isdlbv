@@ -69,6 +69,28 @@ public class Graph {
         return this.edges.get(id1, id2);
     }
 
+    public ArrayList<Marker> getEdgeMarkers(int id1,int id2)
+    {
+        return (this.edges.get(id1,id2)).getMarkers();
+    }
+
+    public HashMap<Integer,Integer> getEdgesMarkersCountFrom(int position)
+    {
+        HashMap<Integer, Integer> ret=new HashMap<Integer, Integer>();
+        ArrayList<Integer> ids = this.getPossiblePathFrom(position);
+
+        for(int i=0;i<ids.size();i++)
+        {
+            ret.put(ids.get(i), this.edges.get(position, ids.get(i)).getMarkers().size());
+        }
+        return ret;
+    }
+
+    public void addEdgeMarker(int id1,int id2,Marker m)
+    {
+        this.edges.get(id1, id2).addMarker(m);
+    }
+    
     /* Returns the list of node's id reachable in one step
      * from the current_position
      */

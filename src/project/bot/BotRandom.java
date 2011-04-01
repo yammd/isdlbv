@@ -21,7 +21,7 @@ public class BotRandom extends Bot {
     }
     
     @Override
-    public void move() {
+    public void decide() {
         ArrayList<Integer> ppf = this.graph.getPossiblePathFrom(this.position);
 
         /* Choose preferentially a path which has not been already visited  */
@@ -41,11 +41,17 @@ public class BotRandom extends Bot {
         int lower = 0;
         int higher = ppf.size();
         int random = (int)(Math.random() * (higher-lower)) + lower;
+        this.next_position=ppf.get(random);
+    }
 
-        this.graph.goFromTo(this.position, ppf.get(random));
+    @Override
+    public void move() {
+        
+        this.graph.goFromTo(this.position, this.next_position);
 
-        this.position=ppf.get(random);
-        this.visitedNodes.put(ppf.get(random), Boolean.TRUE);
+        this.position=this.next_position;
+        this.visitedNodes.put(this.next_position, Boolean.TRUE);
 
     }
+
 }

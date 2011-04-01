@@ -26,12 +26,12 @@ public class SimulationStat extends Simulation
     @Override
     public void run()
     {
-        ArrayList<Bot> bots = this.InitRandomBot(100000);
+        ArrayList<Bot> bots = this.InitRandomBot(35);
         
         
         int count=0;
         boolean isFullyVisited=false;
-        int iter=100;
+        int iter=20;
 
         float average=0;
 
@@ -43,6 +43,9 @@ public class SimulationStat extends Simulation
                 try {
                     //Thread.sleep(1500);
                     Thread.sleep(0);
+                    for(int i=0;i<bots.size();i++)
+                        ((Bot) bots.get(i)).decide();
+
                     for(int i=0;i<bots.size();i++)
                         ((Bot) bots.get(i)).move();
 

@@ -87,12 +87,13 @@ public class robotView extends FrameView {
 
     public void myInit()
     {
-        GraphFileReader gfr = new GraphFileReader("benchmark1_mine_graph.txt","benchmark1_mine.txt");
+        //GraphFileReader gfr = new GraphFileReader("benchmark1_mine_graph.txt","benchmark1_mine.txt");
+        GraphFileReader gfr = new GraphFileReader("benchmark2_graph.txt",null);
         ((JPanelGraph) this.mainPanel).setGraph(gfr.getGraph());
         //System.out.println(gfr.getGraph());
 
-        //Thread simulation = new SimulationStat(gfr.getGraph(),this.mainPanel);
-        Thread simulation = new Simulation(gfr.getGraph(),this.mainPanel);
+        Thread simulation = new SimulationStat(gfr.getGraph(),this.mainPanel);
+        //Thread simulation = new Simulation(gfr.getGraph(),this.mainPanel);
         simulation.start();
     }
     @Action

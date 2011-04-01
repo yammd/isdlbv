@@ -41,6 +41,9 @@ public class Simulation extends Thread {
                 //Thread.sleep(1500);
                 Thread.sleep(100);
                 for(int i=0;i<bots.size();i++)
+                    ((Bot) bots.get(i)).decide();
+
+                for(int i=0;i<bots.size();i++)
                     ((Bot) bots.get(i)).move();
 
                 this.panel.repaint();

@@ -46,12 +46,20 @@ public class GraphFileReader {
             // Convert String matrix to int[][] matrix
             this.parse_graph(lines);
 
-            /* Reading Graphical information */
-            this.parse_gui(filenameGui);
         }
         catch(Exception ex) // General exception: bad way!
         {
             System.out.println("FilReader: open file: "+ex.getMessage());
+        }
+
+        try
+        {
+            /* Reading Graphical information */
+            this.parse_gui(filenameGui);
+        }
+        catch(Exception ex)
+        {
+            System.out.println("FilReader: open GUI file: "+ex.getMessage());
         }
     }
 

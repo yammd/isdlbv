@@ -22,6 +22,7 @@ public abstract class Bot {
     int energy;
     int start_position;
     int position; // Node's id
+    int next_position; // Next position decided in method decide()
 
     HashMap<Integer, Boolean> visitedNodes;
 
@@ -43,7 +44,8 @@ public abstract class Bot {
         this.position=this.start_position;
         //this.energy= ??;
     }
-    
+
+    public abstract void decide();
     public abstract void move();
     //{
         //this.energy= this.energy-ENERGY_MOVE;
